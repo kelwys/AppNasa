@@ -1,4 +1,5 @@
-This is your new Play application
+AppNasa
 =================================
 
-This file will be packaged with your application, when using `activator dist`.
+Sistema desenvolvido para a disciplina de Desenvolvimento Web. O mesmo
+realiza o crud básico de planetas, espaçonaves e missões.
