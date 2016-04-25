@@ -1,0 +1,17 @@
+@(formEspaconave: Form[Espaconave], id:Long)
+@import helper._
+@main("Formulário de Espaconaves") {
+<div style="padding:30px;"> 
+	<h1>Formulário de Espaconaves</h1>
+	@helper.form(action = routes.Espaconaves.salvar(id)) {
+		<fieldset>
+		<legend>Espaconave (@formEspaconave("nome").valueOr("Novo"))</legend>
+		@helper.inputText(formEspaconave("modelo"),'_label -> "Modelo")
+		@helper.inputText(formEspaconave("pais"), '_label -> "Pais")
+		
+		</fieldset>
+		<input type="submit" class="btn btn-primary" value="Salvar">
+		<a href="@routes.Espaconaves.lista()"><button type="button" class="btn btn-primary-outline">Cancelar</button></a>
+	}
+</div>
+}

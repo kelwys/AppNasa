@@ -1,0 +1,3 @@
+error.required=Este campo é obrigatório
+error.invalid=Insira um número válido
+constraint.required=

@@ -1,0 +1,32 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+
+# Rotas para Classe Planetas
+GET     /planetas/                           controllers.Planetas.lista()
+GET     /planetas/novo                       controllers.Planetas.novoPlaneta()
+GET     /planetas/:id			             controllers.Planetas.detalhes(id: Long)
+POST    /planetas/                           controllers.Planetas.salvar(id: Long)
+GET     /planetas/remover/:id                controllers.Planetas.remover(id: Long)
+#GET     /planetas/teste/                    controllers.Planetas.teste()
+
+# Rotas para Classe Espaconaves
+GET     /espaconaves/                           controllers.Espaconaves.lista()
+GET     /espaconaves/novo                       controllers.Espaconaves.novoEspaconave()
+GET     /espaconaves/:id			            controllers.Espaconaves.detalhes(id: Long)
+POST    /espaconaves/                           controllers.Espaconaves.salvar(id: Long)
+GET     /espaconaves/remover/:id                controllers.Espaconaves.remover(id: Long)
+
+# Rotas para Classe Missoes
+GET     /missoes/                              controllers.Missoes.lista()
+GET     /missoes/novo                          controllers.Missoes.novoMissao()
+POST    /missoes/                              controllers.Missoes.salvar(id: Long)
+GET     /missoes/remover/:id                controllers.Missoes.remover(id: Long)
+GET     /missoes/:id			             controllers.Missoes.detalhes(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

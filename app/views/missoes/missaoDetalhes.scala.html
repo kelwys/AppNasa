@@ -1,0 +1,23 @@
+@(formMissao: Form[Missao], id:Long)
+@import helper._
+@main("Formulário de Missoes") {
+<div style="padding:30px;"> 
+	<h1>Formulário de Missoes</h1>
+	@helper.form(action = routes.Missoes.salvar(id)) {
+		<fieldset>
+		<legend>Missao (@formMissao("nome").valueOr("Novo"))</legend>
+		@helper.inputText(formMissao("planeta.id"),'_label -> "Planeta")
+		@helper.inputText(formMissao("espaconave.id"), '_label -> "Espaconave")
+		@helper.inputDate(formMissao("lancamento"),'_label -> "Data Lançamento")
+		@helper.inputText(formMissao("orcamento"), '_label -> "Orçamento")
+		@inputRadioGroup(
+          formMissao("tripulada"),
+          options = options("true"->"Sim","false"->"Não"),
+          '_label -> "A missão é tripulada?")
+		
+		</fieldset>
+		<input type="submit" class="btn btn-primary" value="Salvar">
+		<a href="@routes.Missoes.lista()"><button type="button" class="btn btn-primary-outline">Cancelar</button></a>
+	}
+</div>
+}

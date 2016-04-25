@@ -1,0 +1,48 @@
+@(missoes: List[Missao])
+@main("Catalogo de Missoes") {
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div style="padding:30px;"> 
+<div> 
+    <a href="/espaconaves/"><button type="button" class="btn btn-primary-outline">Espaçonaves</button></a>
+    <a href="/planetas/"><button type="button" class="btn btn-primary-outline">Planetas</button></a>
+    <a href="/missoes/"><button type="button" class="btn btn-primary-outline">Missões</button></a>
+</div>
+<h2>Todos as missoes</h2>
+<a href="/"><button type="button" class="btn btn-primary-outline">Home</button></a>
+<a href="/missoes/novo"><button type="button" class="btn btn-primary-outline">Novo</button></a>
+<br>
+<br>
+<div class="table table-responsive col-md-5">
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>PLANETA</th>
+				<th>ESPAÇONAVE</th>
+				<th>DTA LANÇAMENTO</th>
+				<th>TRIPULADA</th>
+				<th>VALOR ORÇAMENTO</th>
+			</tr>
+		</thead>
+		<tbody>
+		@for(missao <- missoes) {
+			<tr>
+				<td>@missao.id</td>
+				<td>@missao.planeta</td>
+				<td>@missao.espaconave</td>
+				<td>@missao.lancamento</td>
+				<td>@if(missao.tripulada == true){<img src="https://eies.s3.amazonaws.com/static/admin/img/icon-yes.gif">}else{ <img src="https://eies.s3.amazonaws.com/static/admin/img/icon-no.gif"> }</td>
+				<td>@missao.orcamento</td>
+				<td><a href="@routes.Missoes.detalhes(missao.id)"><input type="submit" class="btn btn-primary" value="Editar"></a></td>
+				<td><a href="@routes.Missoes.remover(missao.id)" ><input type="submit" class="btn btn-primary" value="Remover"></a></td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>
+</div>
+}
+
+
+

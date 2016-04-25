@@ -1,0 +1,21 @@
+@(formPlaneta: Form[Planeta], id:Long)
+@import helper._
+@main("Formulário de Planeta") {
+<div style="padding:30px;"> 
+	<h1>Formulário de Planeta</h1>
+	@helper.form(action = routes.Planetas.salvar(id)) {
+		<fieldset>
+		<legend>Planeta (@formPlaneta("nome").valueOr("Novo"))</legend>
+		@helper.inputText(formPlaneta("nome"),'_label -> "Nome")
+		@helper.inputText(formPlaneta("sistema"), '_label -> "Sistema")
+		@inputRadioGroup(
+          formPlaneta("habitavel"),
+          options = options("true"->"Sim","false"->"Não"),
+          '_label -> "Habitavel?")
+        
+		</fieldset>
+		<input type="submit" class="btn btn-primary" value="Salvar">
+		<a href="@routes.Planetas.lista()"><button type="button" class="btn btn-primary-outline">Cancelar</button></a>
+	}
+</div>	
+}
