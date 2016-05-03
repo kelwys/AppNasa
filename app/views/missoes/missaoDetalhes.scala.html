@@ -1,13 +1,28 @@
-@(formMissao: Form[Missao], id:Long)
+@(formMissao: Form[Missao], id:Long, espaconaves:List[Espaconave], planetas:List[Planeta])
 @import helper._
 @main("Formulário de Missoes") {
 <div style="padding:30px;"> 
-	<h1>Formulário de Missoes</h1>
+	<h5>Formulário de Missões</h5>
 	@helper.form(action = routes.Missoes.salvar(id)) {
 		<fieldset>
 		<legend>Missao (@formMissao("nome").valueOr("Novo"))</legend>
-		@helper.inputText(formMissao("planeta.id"),'_label -> "Planeta")
-		@helper.inputText(formMissao("espaconave.id"), '_label -> "Espaconave")
+		<label>Espaconave: </label>
+			<select class="browser-default" name="espaconave.id">
+				@for(espaconave <- espaconaves){
+					<option value="@(espaconave.id)" @{if (formMissao("espaconave.id") == espaconave.id) "selected" else ""}>
+						@(espaconave.modelo)
+					</option>
+				} 
+			</select>
+		<br>
+		<label>Planeta: </label>
+		<select class="browser-default" name="planeta.id">
+			@for(planeta <- planetas){
+				<option value="@(planeta.id)" @{if (formMissao("planeta.id") == planeta.id) "selected" else ""}>
+					@(planeta.nome)
+				</option>
+			} 
+		</select>
 		@helper.inputDate(formMissao("lancamento"),'_label -> "Data Lançamento")
 		@helper.inputText(formMissao("orcamento"), '_label -> "Orçamento")
 		@inputRadioGroup(

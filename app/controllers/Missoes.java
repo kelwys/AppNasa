@@ -3,6 +3,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Espaconave;
 import models.Missao;
 import models.Planeta;
 import play.data.Form;
@@ -22,7 +23,11 @@ public class Missoes extends Controller {
 	
 	public Result novoMissao()
 	{
-		return ok(views.html.missoes.missaoDetalhes.render(formMissao, new Long(0)));
+		List<Espaconave> espaconaves = Espaconave.find.all();
+		List<Planeta> planetas = Planeta.find.all();
+		
+		
+		return ok(views.html.missoes.missaoDetalhes.render(formMissao, new Long(0),espaconaves,planetas));
 	}
 	
 	public Result detalhes(long id)
@@ -33,8 +38,10 @@ public class Missoes extends Controller {
 		 return notFound(String.format("Missao %s não existe.", id));
 		}
 		Form<Missao> formPreenchido = formMissao.fill(missao);
+		List<Espaconave> espaconaves = Espaconave.find.all();
+		List<Planeta> planetas = Planeta.find.all();
 
-		return ok(views.html.missoes.missaoDetalhes.render(formPreenchido, missao.id));
+		return ok(views.html.missoes.missaoDetalhes.render(formPreenchido, missao.id,espaconaves,planetas));
 	}
 	
 	

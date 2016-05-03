@@ -3,13 +3,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <div style="padding:30px;"> 
-<div> 
-    <a href="/espaconaves/"><button type="button" class="btn btn-primary-outline">Espaçonaves</button></a>
-    <a href="/planetas/"><button type="button" class="btn btn-primary-outline">Planetas</button></a>
-    <a href="/missoes/"><button type="button" class="btn btn-primary-outline">Missões</button></a>
-</div>
-<h2>Todos as missoes</h2>
-<a href="/"><button type="button" class="btn btn-primary-outline">Home</button></a>
+<h4>TODAS AS MISSÕES</h4>
 <a href="/missoes/novo"><button type="button" class="btn btn-primary-outline">Novo</button></a>
 <br>
 <br>
@@ -31,7 +25,7 @@
 				<td>@missao.id</td>
 				<td>@missao.planeta</td>
 				<td>@missao.espaconave</td>
-				<td>@missao.lancamento</td>
+				<td>@missao.lancamento.format("dd/MM/YYYY")</td>
 				<td>@if(missao.tripulada == true){<img src="https://eies.s3.amazonaws.com/static/admin/img/icon-yes.gif">}else{ <img src="https://eies.s3.amazonaws.com/static/admin/img/icon-no.gif"> }</td>
 				<td>@missao.orcamento</td>
 				<td><a href="@routes.Missoes.detalhes(missao.id)"><input type="submit" class="btn btn-primary" value="Editar"></a></td>

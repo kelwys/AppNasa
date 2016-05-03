@@ -2,7 +2,7 @@
 @import helper._
 @main("Formulário de Planeta") {
 <div style="padding:30px;"> 
-	<h1>Formulário de Planeta</h1>
+	<h5>Formulário de Planeta</h5>
 	@helper.form(action = routes.Planetas.salvar(id)) {
 		<fieldset>
 		<legend>Planeta (@formPlaneta("nome").valueOr("Novo"))</legend>
