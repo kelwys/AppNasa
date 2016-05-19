@@ -26,7 +26,7 @@
 				<td>@missao.planeta</td>
 				<td>@missao.espaconave</td>
 				<td>@missao.lancamento.format("dd/MM/YYYY")</td>
-				<td>@if(missao.tripulada == true){<img src="https://eies.s3.amazonaws.com/static/admin/img/icon-yes.gif">}else{ <img src="https://eies.s3.amazonaws.com/static/admin/img/icon-no.gif"> }</td>
+				<td>@if(missao.tripulada == true){<img src="@routes.Assets.versioned("images/icon-yes.gif")">}else{ <img src="@routes.Assets.versioned("images/icon-no.gif")"> }</td>
 				<td>@missao.orcamento</td>
 				<td><a href="@routes.Missoes.detalhes(missao.id)"><input type="submit" class="btn btn-primary" value="Editar"></a></td>
 				<td><a href="@routes.Missoes.remover(missao.id)" ><input type="submit" class="btn btn-primary" value="Remover"></a></td>

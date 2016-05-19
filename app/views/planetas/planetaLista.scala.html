@@ -23,7 +23,7 @@
 				<td>@planeta.id</td>
 				<td>@planeta.nome</td>
 				<td>@planeta.sistema</td>
-				<td>@if(planeta.habitavel == true){<img src="https://eies.s3.amazonaws.com/static/admin/img/icon-yes.gif">}else{ <img src="https://eies.s3.amazonaws.com/static/admin/img/icon-no.gif"> }</td>
+				<td>@if(planeta.habitavel == true){<img src="@routes.Assets.versioned("images/icon-yes.gif")">}else{ <img src="@routes.Assets.versioned("images/icon-no.gif")"> }</td>
 				<td><a href="@routes.Planetas.detalhes(planeta.id)"><input type="submit" class="btn btn-primary" value="Editar"></a></td>
 				<td><a href="@routes.Planetas.remover(planeta.id)" ><input type="submit" class="btn btn-primary" value="Remover"></a></td>
 			</tr>

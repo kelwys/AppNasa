@@ -1,35 +1,27 @@
 @(formMissao: Form[Missao], id:Long, espaconaves:List[Espaconave], planetas:List[Planeta])
-@import helper._
+@import meuHelper._
 @main("Formulário de Missoes") {
 <div style="padding:30px;"> 
 	<h5>Formulário de Missões</h5>
-	@helper.form(action = routes.Missoes.salvar(id)) {
+	@meuHelper.meuForm("missoes", routes.Missoes.salvar(id), "post") {
 		<fieldset>
 		<legend>Missao (@formMissao("nome").valueOr("Novo"))</legend>
 		<label>Espaconave: </label>
-			<select class="browser-default" name="espaconave.id">
-				@for(espaconave <- espaconaves){
-					<option value="@(espaconave.id)" @{if (formMissao("espaconave.id") == espaconave.id) "selected" else ""}>
-						@(espaconave.modelo)
-					</option>
-				} 
-			</select>
-		<br>
-		<label>Planeta: </label>
-		<select class="browser-default" name="planeta.id">
-			@for(planeta <- planetas){
-				<option value="@(planeta.id)" @{if (formMissao("planeta.id") == planeta.id) "selected" else ""}>
-					@(planeta.nome)
-				</option>
-			} 
-		</select>
-		@helper.inputDate(formMissao("lancamento"),'_label -> "Data Lançamento")
-		@helper.inputText(formMissao("orcamento"), '_label -> "Orçamento")
-		@inputRadioGroup(
-          formMissao("tripulada"),
-          options = options("true"->"Sim","false"->"Não"),
-          '_label -> "A missão é tripulada?")
-		
+		<select class="browser-default" name="espaconave.id">
+	    	@for(espaconave <- espaconaves){
+	        	<option value="@(espaconave.id)" @{if (formMissao("espaconave.id") == espaconave.id) "selected" else ""}>@(espaconave.modelo)</option>
+	        } 
+	    </select>
+	    <br>
+	    <label>Planeta: </label>
+	    <select class="browser-default" name="planeta.id">
+	    	@for(planeta <- planetas){
+	        <option value="@(planeta.id)" @{if (formMissao("planeta.id") == planeta.id) "selected" else ""}>@(planeta.nome)</option>
+	      	}
+	    </select>
+		@meuHelper.inputDate("Data Lançamento")
+		@meuHelper.inputText("", formMissao("orcamento").value, "Orçamento")
+		@meuHelper.checkbox("tripulada", formMissao("tripulada").value, "Missão tripulada")
 		</fieldset>
 		<input type="submit" class="btn btn-primary" value="Salvar">
 		<a href="@routes.Missoes.lista()"><button type="button" class="btn btn-primary-outline">Cancelar</button></a>

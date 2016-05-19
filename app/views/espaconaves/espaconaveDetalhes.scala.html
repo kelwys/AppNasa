@@ -1,13 +1,13 @@
 @(formEspaconave: Form[Espaconave], id:Long)
-@import helper._
+@import meuHelper._
 @main("Formulário de Espaconaves") {
 <div style="padding:30px;"> 
 	<h5>Formulário de Espaçonaves</h5>
-	@helper.form(action = routes.Espaconaves.salvar(id)) {
+	@meuHelper.meuForm("espaçonaves", routes.Espaconaves.salvar(id), "post") {
 		<fieldset>
 		<legend>Espaconave (@formEspaconave("nome").valueOr("Novo"))</legend>
-		@helper.inputText(formEspaconave("modelo"),'_label -> "Modelo")
-		@helper.inputText(formEspaconave("pais"), '_label -> "Pais")
+		@meuHelper.inputText("modelo", formEspaconave("modelo").value, "Modelo")
+		@meuHelper.inputText("pais", formEspaconave("pais").value, "Pais")
 		
 		</fieldset>
 		<input type="submit" class="btn btn-primary" value="Salvar">

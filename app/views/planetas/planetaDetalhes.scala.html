@@ -1,17 +1,14 @@
 @(formPlaneta: Form[Planeta], id:Long)
-@import helper._
+@import meuHelper._
 @main("Formulário de Planeta") {
-<div style="padding:30px;"> 
+<div style="padding:30px;">
 	<h5>Formulário de Planeta</h5>
-	@helper.form(action = routes.Planetas.salvar(id)) {
+	@meuHelper.meuForm("planetas", routes.Planetas.salvar(id), "post"){
 		<fieldset>
 		<legend>Planeta (@formPlaneta("nome").valueOr("Novo"))</legend>
-		@helper.inputText(formPlaneta("nome"),'_label -> "Nome")
-		@helper.inputText(formPlaneta("sistema"), '_label -> "Sistema")
-		@inputRadioGroup(
-          formPlaneta("habitavel"),
-          options = options("true"->"Sim","false"->"Não"),
-          '_label -> "Habitavel?")
+		@meuHelper.inputText("nome", formPlaneta("nome").value, "Nome:")
+		@meuHelper.inputText("sistema", formPlaneta("sistema").value, "Sistema Solar:")
+		@meuHelper.checkbox("habitavel", formPlaneta("habitavel").value, "Habitavel")
         
 		</fieldset>
 		<input type="submit" class="btn btn-primary" value="Salvar">
